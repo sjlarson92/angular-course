@@ -6,12 +6,25 @@
 </div>
 
 <div class="courses">
-
-  @for (course of courses; track course.id) {
+  <!--  the track on the list is similar to rowKey in a table to track the items in a list by Angular-->
+  <!--  $index is an option in the @for and contains the index for the item in the list-->
+  <!--  $count is the total number of elements in list-->
+  <!--  you can also access the first or last element in the list with $first or $last-->
+  <!--  $even and $odd will determine if the element is even or odd-->
+  @for (course of courses; track course.id; let first = $first; let
+    last = $last; let even = $even; let odd = $odd) {
     <course-card
-      (courseSelected)="onCourseSelected($event)"
+      [index]="$index"
       [course]="course"
-      />
+      [class.is-first]="first"
+      [class.is-last]="last"
+      [class.is-even]="even"
+      [class.is-odd]="odd"
+      (courseSelected)="onCourseSelected($event)"
+    />
+  } @empty {
+    <!--    @empty will only display if the for loop list is empty-->
+    <h1> No courses found! </h1>
   }
 
 </div>
