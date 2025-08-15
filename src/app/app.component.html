@@ -6,6 +6,7 @@
 </div>
 
 <div class="courses">
+  <!--  @for is the newer syntax compared to ngFor and should be used instead of ngFor-->
   <!--  the track on the list is similar to rowKey in a table to track the items in a list by Angular-->
   <!--  $index is an option in the @for and contains the index for the item in the list-->
   <!--  $count is the total number of elements in list-->
@@ -26,6 +27,15 @@
     <!--    @empty will only display if the for loop list is empty-->
     <h1> No courses found! </h1>
   }
+
+  <!--  Same code using ngFor: OLD VERSION, use @for -->
+
+  <course-card *ngFor="let course of courses; index as i; first as isFirst"
+               [class.is-first]="isFirst"
+               [index]="i + 1"
+               [course]="course"
+               (courseSelected)="onCourseSelected($event)">
+  </course-card>
 
 </div>
 
