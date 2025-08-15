@@ -1,7 +1,7 @@
 <div class="course-card"
      [ngClass]="cardClasses()">
 
-  <div class="course-title">
+  <div class="course-title" [ngStyle]="cardStyle()">
     {{index}} {{ course.description }}
   </div>
 
